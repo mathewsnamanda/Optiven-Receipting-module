@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "oazh7zjtamlhM7mbCeBc+6VI+AmnSX1T+dJejNYaChydlF91NR/s4W8s2oave4agvpf27w84Y7pRrnGvrxL4og==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mathews Namanda\\OneDrive\\Desktop\\Optiven Receipting Module\\WebApplication1\\WebApplication1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\skiasharp\\2.80.2\\skiasharp.2.80.2.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\syncfusion.compression.net.core\\19.2.0.44\\syncfusion.compression.net.core.19.2.0.44.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\syncfusion.docio.net.core\\19.2.0.44\\syncfusion.docio.net.core.19.2.0.44.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\syncfusion.dociorenderer.net.core\\19.2.0.44\\syncfusion.dociorenderer.net.core.19.2.0.44.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\syncfusion.licensing\\19.2.0.44\\syncfusion.licensing.19.2.0.44.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\syncfusion.officechart.net.core\\19.2.0.44\\syncfusion.officechart.net.core.19.2.0.44.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\syncfusion.pdf.net.core\\19.2.0.44\\syncfusion.pdf.net.core.19.2.0.44.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\syncfusion.skiasharphelper.net.core\\19.2.0.44\\syncfusion.skiasharphelper.net.core.19.2.0.44.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Mathews Namanda\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
