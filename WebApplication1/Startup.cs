@@ -1,6 +1,8 @@
+using ClientStatements.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,6 +30,10 @@ namespace WebApplication1
             services.AddControllers();
             services.AddSwaggerGen();
             SyncfusionLicenseProvider.RegisterLicense("MDAxQDMxMzkyZTMyMmUzMFVaOTRoQXF6dDFlcmlmVG1CT1VtZDQ1NkQzeHdtcUdsRE1aTGJOSzA0d2c9");
+            services.AddDbContext<OptivenContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
 
         }
 
