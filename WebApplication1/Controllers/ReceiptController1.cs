@@ -54,6 +54,11 @@ namespace WebApplication1.Controllers
                     {
                         Password = "hudumaforyouth@2042#!";
                     }
+
+                    if (response.accno.Length > 4)
+                        response.accno = "*" + response.accno.Substring(response.accno.Length - 4, 4);
+
+
                     Username = Username.Trim();
                     Password = Password.Trim();
                     var basePath = Path.Combine(Directory.GetCurrentDirectory(), "Template");

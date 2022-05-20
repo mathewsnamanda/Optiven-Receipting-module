@@ -8,13 +8,13 @@ namespace ReceiptingModule.Models
         [Required]
         public double Amount { get; set; }
         [Required]
-        public DateTime PaymentDate { get; set; } = DateTime.Now;
+        public DateTime PaymentDate { get; set; }
         [Required]
-        public string PlotNo { get; set; } = "";
+        public string PlotNo { get; set; } 
         [Required]
-        public string Receiptno { get; set; } = "";
+        public string Receiptno { get; set; }
         [Required]
-        public string client { get; set; } = "";
+        public string client { get; set; }
         [Required]
         public string accno { get; set; } = "";
         [Required]

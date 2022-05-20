@@ -42,13 +42,13 @@ namespace ReceiptingModule.Controllers
             }
            if(!string.IsNullOrEmpty(receiptClass.accno))
             {
-                if (receiptClass.accno.Length > 3)
-                    receiptClass.accno = "*****" + receiptClass.accno.Substring(receiptClass.accno.Length - 3, 3);
+                if (receiptClass.accno.Length > 4)
+                    receiptClass.accno = "*" + receiptClass.accno.Substring(receiptClass.accno.Length - 4, 4);
             }
             if(!string.IsNullOrEmpty(receiptClass.chequenumber))
             {
-                if (receiptClass.chequenumber.Length > 3)
-                    receiptClass.chequenumber = "*****" + receiptClass.chequenumber.Substring(receiptClass.chequenumber.Length - 3, 3);
+                if (receiptClass.chequenumber.Length > 4)
+                    receiptClass.chequenumber = "*" + receiptClass.chequenumber.Substring(receiptClass.chequenumber.Length - 4, 4);
 
             }
             if (ModelState.IsValid)
@@ -74,11 +74,11 @@ namespace ReceiptingModule.Controllers
                 {
                     path = basePath + "/" + "Deposit.doc";
                 }
-                else if (receiptClass.paymentfor.ToLower().Trim() == "final")
+                else if (receiptClass.paymentfor.ToLower().Trim().Contains("final"))
                 {
                     path = basePath + "/" + "Final.doc";
                 }
-                else if(receiptClass.paymentfor.ToLower().Trim() != "final"&& receiptClass.paymentfor.ToLower().Trim() != "deposit")
+                else if(!receiptClass.paymentfor.ToLower().Trim().Contains("final") && !receiptClass.paymentfor.ToLower().Trim().Contains("deposit"))
                 {
                     path = basePath + "/" + "Installment.doc";
                 }
