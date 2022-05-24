@@ -34,25 +34,39 @@ namespace ReceiptingModule.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]ReceiptClass receiptClass)
         {
-            receiptClass.receivedby = receiptClass.receivedby.Split(" ")[receiptClass.receivedby.Split("").Length - 1].Trim();
-          if (!string.IsNullOrEmpty(receiptClass.PlotNo))
-            {
-                if (receiptClass.PlotNo.Contains("-"))
-                    receiptClass.PlotNo = receiptClass.PlotNo.Split("-")[1].Trim();
-            }
-           if(!string.IsNullOrEmpty(receiptClass.accno))
-            {
-                if (receiptClass.accno.Length > 4)
-                    receiptClass.accno = "*" + receiptClass.accno.Substring(receiptClass.accno.Length - 4, 4);
-            }
-            if(!string.IsNullOrEmpty(receiptClass.chequenumber))
-            {
-                if (receiptClass.chequenumber.Length > 4)
-                    receiptClass.chequenumber = "*" + receiptClass.chequenumber.Substring(receiptClass.chequenumber.Length - 4, 4);
-
-            }
+           
             if (ModelState.IsValid)
             {
+                receiptClass.receivedby = receiptClass.receivedby.Split(" ")[receiptClass.receivedby.Split("").Length - 1].Trim();
+                if (!string.IsNullOrEmpty(receiptClass.PlotNo))
+                {
+                    if (receiptClass.PlotNo.Contains("-"))
+                        receiptClass.PlotNo = receiptClass.PlotNo.Split("-")[1].Trim();
+                }
+                if (!string.IsNullOrEmpty(receiptClass.accno))
+                {
+                    if (receiptClass.accno.Contains("1") | receiptClass.accno.Contains("2") | receiptClass.accno.Contains("3") | receiptClass.accno.Contains("4") | receiptClass.accno.Contains("5") |
+                        receiptClass.accno.Contains("6") | receiptClass.accno.Contains("7") | receiptClass.accno.Contains("8") | receiptClass.accno.Contains("9") | receiptClass.accno.Contains("0"))
+                    {
+                        if (receiptClass.accno.Length > 4)
+                        {
+                            receiptClass.accno = "*" + receiptClass.accno.Substring(receiptClass.accno.Length - 4, 4);
+                        }
+                    }
+                    else
+                    {
+                        receiptClass.accno = receiptClass.accno.Split(" ")[0].Trim();
+                    }
+
+
+
+                }
+                if (!string.IsNullOrEmpty(receiptClass.chequenumber))
+                {
+                    if (receiptClass.chequenumber.Length > 4)
+                        receiptClass.chequenumber = "*" + receiptClass.chequenumber.Substring(receiptClass.chequenumber.Length - 4, 4);
+
+                }
                 string Username = this._configuration.GetConnectionString($"{receiptClass.receivedby.Trim()}_Username");
                 string Password = this._configuration.GetConnectionString($"{receiptClass.receivedby.Trim()}_Password");
                
@@ -70,9 +84,13 @@ namespace ReceiptingModule.Controllers
                 var basePath = Path.Combine(Directory.GetCurrentDirectory(), "Template");
                 var basePath1 = Path.Combine(Directory.GetCurrentDirectory(), "Documents");
                 string path = "";
-                if (receiptClass.paymentfor.ToLower().Trim() == "deposit")
+                if (receiptClass.paymentfor.ToLower().Trim()=="deposit")
                 {
                     path = basePath + "/" + "Deposit.doc";
+                }
+                else if (receiptClass.paymentfor.ToLower().Trim().Contains("deposit")&& receiptClass.paymentfor.ToLower().Trim() != "deposit")
+                {
+                    path = basePath + "/" + "Installment.doc";
                 }
                 else if (receiptClass.paymentfor.ToLower().Trim().Contains("final"))
                 {
@@ -87,7 +105,7 @@ namespace ReceiptingModule.Controllers
                     FileStream fileStreamPath = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                     WordDocument document = new WordDocument(fileStreamPath, FormatType.Docx);
                     string[] fieldNames = new string[] { "Receiptno", "PaymentDate", "client", "Paymode", "accno", "cheque", "item", "paymentfor", "project", "PlotNo", "Amount", "Receivedby" };
-                    string[] fieldValues = new string[] { receiptClass.Receiptno, receiptClass.PaymentDate.ToString("MMM dd, yyyy"), receiptClass.client.ToString(),receiptClass.Paymode, receiptClass.accno, receiptClass.chequenumber, receiptClass.item,receiptClass.paymentfor,receiptClass.project,receiptClass.PlotNo,receiptClass.Amount.ToString("n"),receiptClass.receivedby };
+                    string[] fieldValues = new string[] { receiptClass.Receiptno, Convert.ToDateTime(receiptClass.PaymentDate).ToString("MMM dd, yyyy"), receiptClass.client.ToString(),receiptClass.Paymode, receiptClass.accno, receiptClass.chequenumber, receiptClass.item,receiptClass.paymentfor,receiptClass.project,receiptClass.PlotNo,Convert.ToDouble(receiptClass.Amount).ToString("n"),receiptClass.receivedby };
 
                     document.MailMerge.Execute(fieldNames, fieldValues);
 
@@ -125,10 +143,10 @@ namespace ReceiptingModule.Controllers
                     saveReceipt.project = receiptClass.project;
                     saveReceipt.PlotNo = receiptClass.PlotNo;
                     saveReceipt.Paymode = receiptClass.Paymode;
-                    saveReceipt.PaymentDate = receiptClass.PaymentDate;
+                    saveReceipt.PaymentDate = Convert.ToDateTime(receiptClass.PaymentDate);
                     saveReceipt.item = receiptClass.item;
                     saveReceipt.bcopy = receiptClass.bcopy;
-                    saveReceipt.Amount=receiptClass.Amount;
+                    saveReceipt.Amount=Convert.ToDouble( receiptClass.Amount);
                    
                     
                     _context.Receipts.Add(saveReceipt);

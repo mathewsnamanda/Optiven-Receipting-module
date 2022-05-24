@@ -6,9 +6,9 @@ namespace ReceiptingModule.Models
     public class ReceiptClass
     {
         [Required]
-        public double Amount { get; set; }
+        public string Amount { get; set; }
         [Required]
-        public DateTime PaymentDate { get; set; }
+        public string PaymentDate { get; set; }
         [Required]
         public string PlotNo { get; set; } 
         [Required]
