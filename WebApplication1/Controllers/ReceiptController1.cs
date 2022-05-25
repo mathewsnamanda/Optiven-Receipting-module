@@ -106,7 +106,7 @@ namespace WebApplication1.Controllers
                         document.Close();
                         ms.Position = 0;
                         IMailer t = new MailClass();
-                        bool result = t.mail(Username,Password,"Optiven Receipt", $"Dear {response.client},<br />&nbsp;<br /> We trust that you are well.<br />&nbsp;<br /> Kindly find attached the official receipt for payment towards your investment. Kindly confirm the receipt.<br />&nbsp;<br /> We value your great support. <br /><br /> Kind Regards, <br /> The Optiven Team.", basePath1 + "/" + filename1, response.ReceiverEmail, response.copy, response.bcopy);
+                        bool result = t.mail(Username,Password, $"Payment Receipt for {response.client}", $"Dear {response.client},<br />&nbsp;<br /> We trust that you are well.<br />&nbsp;<br /> Kindly find attached the official receipt for payment towards your investment. Kindly confirm the receipt.<br />&nbsp;<br /> We value your great support. <br /><br /> Kind Regards, <br /> The Optiven Team.", basePath1 + "/" + filename1, response.ReceiverEmail, response.copy, response.bcopy);
 
                     }
                 }

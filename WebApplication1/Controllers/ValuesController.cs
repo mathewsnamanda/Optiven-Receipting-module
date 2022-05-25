@@ -67,6 +67,12 @@ namespace ReceiptingModule.Controllers
                         receiptClass.chequenumber = "*" + receiptClass.chequenumber.Substring(receiptClass.chequenumber.Length - 4, 4);
 
                 }
+                if(receiptClass.ReceiverEmail.Contains(","))
+                {
+                    receiptClass.ReceiverEmail=receiptClass.ReceiverEmail.Split(",")[0].Trim();
+                }
+
+
                 string Username = this._configuration.GetConnectionString($"{receiptClass.receivedby.Trim()}_Username");
                 string Password = this._configuration.GetConnectionString($"{receiptClass.receivedby.Trim()}_Password");
                
@@ -130,7 +136,7 @@ namespace ReceiptingModule.Controllers
                     document.Close();
                     ms.Position = 0;
                     IMailer t = new MailClass();
-                    bool result = t.mail(Username,Password,"Optiven Receipt", $"Dear {receiptClass.client},<br />&nbsp;<br /> We trust that you are well.<br />&nbsp;<br /> Kindly find attached the official receipt for payment towards your investment. Kindly confirm the receipt.<br />&nbsp;<br /> We value your great support. <br /><br /> Kind Regards, <br /> The Optiven Team.", basePath1 + "/" + filename1, receiptClass.ReceiverEmail, receiptClass.copy, receiptClass.bcopy);
+                    bool result = t.mail(Username,Password,$"Official Receipt for {receiptClass.PlotNo}", $"Dear {receiptClass.client},<br />&nbsp;<br /> We trust that you are well.<br />&nbsp;<br /> Kindly find attached the official receipt for payment towards your investment. Kindly confirm the receipt.<br />&nbsp;<br /> We value your great support. <br /><br /> Kind Regards, <br /> The Optiven Team.", basePath1 + "/" + filename1, receiptClass.ReceiverEmail, receiptClass.copy, receiptClass.bcopy);
                     SaveReceipt saveReceipt = new SaveReceipt();
                     saveReceipt.client = receiptClass.client;
                     saveReceipt.paymentfor = receiptClass.paymentfor;
