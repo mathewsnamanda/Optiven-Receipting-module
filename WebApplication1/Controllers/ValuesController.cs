@@ -41,7 +41,7 @@ namespace ReceiptingModule.Controllers
                 if (!string.IsNullOrEmpty(receiptClass.PlotNo))
                 {
                     if (receiptClass.PlotNo.Contains("-"))
-                        receiptClass.PlotNo = receiptClass.PlotNo.Split("-")[1].Trim();
+                        receiptClass.PlotNo = receiptClass.PlotNo.Substring(receiptClass.PlotNo.IndexOf("-") + 1).Trim();
                 }
                 if (!string.IsNullOrEmpty(receiptClass.accno))
                 {
